@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'crawling_pta_trunojoyo';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <link rel="prev" title="Pencarian dan Penambangan Web" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -151,7 +151,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Pencarian dan Penambangan Web
                 </a>
             </li>
         </ul>
@@ -481,7 +481,102 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data Berhasil Di Simpan Dengan Jumlah 5 data
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">KeyboardInterrupt</span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-5-a75e6f966aab&gt;</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">main</span><span class="p">(</span><span class="s1">&#39;https://pta.trunojoyo.ac.id/c_search/byprod/10&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-4-11194fdab835&gt;</span> in <span class="ni">main</span><span class="nt">(url, num_page)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>   <span class="n">final_crawl</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_page</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="n">hasil_crawl</span><span class="p">,</span> <span class="n">next_page_link</span> <span class="o">=</span> <span class="n">crawl_pta_trunojoyo</span><span class="p">(</span><span class="n">next_page_link</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">final_crawl</span><span class="o">+=</span><span class="n">hasil_crawl</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+
+<span class="nn">&lt;ipython-input-3-68ff5a151aa1&gt;</span> in <span class="ni">crawl_pta_trunojoyo</span><span class="nt">(url)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># mengambil link selengkapnya dan juga menyimpan data</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">def</span> <span class="nf">crawl_pta_trunojoyo</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>   <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span>   <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="sd"> </span>
+<span class="ne">---&gt; </span><span class="mi">73</span><span class="sd">     return request(&quot;get&quot;, url, params=params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span><span class="sd"> </span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span><span class="sd">     # cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span><span class="sd">     with sessions.Session() as session:</span>
+<span class="ne">---&gt; </span><span class="mi">59</span><span class="sd">         return session.request(method=method, url=url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span><span class="sd"> </span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span><span class="sd">         }</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span><span class="sd">         send_kwargs.update(settings)</span>
+<span class="ne">--&gt; </span><span class="mi">589</span><span class="sd">         resp = self.send(prep, **send_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span><span class="sd">         return resp</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="sd">         # Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">703</span><span class="sd">         r = adapter.send(request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span><span class="sd">         # Total elapsed time of the request (approximately)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">484</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">485</span><span class="sd">         try:</span>
+<span class="ne">--&gt; </span><span class="mi">486</span><span class="sd">             resp = conn.urlopen(</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span><span class="sd">                 method=request.method,</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="sd">                 url=url,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span><span class="sd">             # Make the request on the HTTPConnection object</span>
+<span class="ne">--&gt; </span><span class="mi">790</span><span class="sd">             response = self._make_request(</span>
+<span class="g g-Whitespace">    </span><span class="mi">791</span><span class="sd">                 conn,</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span><span class="sd">                 method,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
+<span class="g g-Whitespace">    </span><span class="mi">465</span><span class="sd">             # Trigger any extra validation we need to do.</span>
+<span class="g g-Whitespace">    </span><span class="mi">466</span><span class="sd">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">467</span><span class="sd">                 self._validate_conn(conn)</span>
+<span class="g g-Whitespace">    </span><span class="mi">468</span><span class="sd">             except (SocketTimeout, BaseSSLError) as e:</span>
+<span class="g g-Whitespace">    </span><span class="mi">469</span><span class="sd">                 self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_validate_conn</span><span class="nt">(self, conn)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1090</span><span class="sd">         # Force connect early to allow us to validate the connection.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1091</span><span class="sd">         if conn.is_closed:</span>
+<span class="ne">-&gt; </span><span class="mi">1092</span><span class="sd">             conn.connect()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1093</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1094</span><span class="sd">         if not conn.is_verified:</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connection.py</span> in <span class="ni">connect</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">609</span><span class="sd">     def connect(self) -&gt; None:</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span><span class="sd">         sock: socket.socket | ssl.SSLSocket</span>
+<span class="ne">--&gt; </span><span class="mi">611</span><span class="sd">         self.sock = sock = self._new_conn()</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span><span class="sd">         server_hostname: str = self.host</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span><span class="sd">         tls_in_tls = False</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connection.py</span> in <span class="ni">_new_conn</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">203</span>             <span class="n">sock</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span>                 <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dns_host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/util/connection.py</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, socket_options)</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>             <span class="k">if</span> <span class="n">source_address</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>                 <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">source_address</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">73</span>             <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">sa</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>             <span class="c1"># Break explicitly a reference cycle</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>             <span class="n">err</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -525,7 +620,7 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dis
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">Pencarian dan Penambangan Web</p>
       </div>
     </a>
 </div></div>
