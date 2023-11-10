@@ -1,0 +1,43 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+data = ["Penelitian ini menggabungkan konsep kecerdasan buatan dengan algoritma penjadwalan dalam upaya meningkatkan efisiensi produksi dalam lingkungan manufaktur. Kami memperkenalkan pendekatan yang memanfaatkan kecerdasan komputasional, yaitu algoritma optimasi berbasis swarm intelligence, seperti algoritma PSO (Particle Swarm Optimization) dan algoritma ACO (Ant Colony Optimization). Tujuan utama penelitian ini adalah untuk mengoptimalkan jadwal produksi dengan meminimalkan waktu produksi dan biaya, sambil mempertimbangkan berbagai kendala produksi seperti kapasitas mesin, waktu pemrosesan, dan persyaratan bahan baku. Melalui eksperimen dan simulasi, kami membandingkan hasil dari algoritma swarm intelligence dengan pendekatan konvensional. Hasilnya menunjukkan bahwa algoritma PSO dan ACO dapat menghasilkan jadwal produksi yang lebih efisien, dengan waktu produksi yang lebih pendek dan biaya yang lebih rendah. Selain itu, algoritma ini mampu beradaptasi dengan perubahan dalam lingkungan produksi dan menghasilkan jadwal yang optimal bahkan dalam situasi yang kompleks. Penelitian ini menunjukkan potensi besar dari penggunaan kecerdasan komputasional dalam meningkatkan efisiensi dan produktivitas dalam industri manufaktur. Hasil penelitian ini dapat digunakan sebagai dasar untuk mengembangkan sistem penjadwalan cerdas yang dapat diterapkan dalam berbagai industri."]
+vectorizer = joblib.load('/content/drive/MyDrive/PPW/PPW/tf_vectorizer.pkl')
+a = vectorizer.transform(data).toarray()
+b = lda.transform(a)
+model.predict(b)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+[0;32m<ipython-input-14-bce83cad164b>[0m in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m [0mdata[0m [0;34m=[0m [0;34m[[0m[0;34m"Penelitian ini menggabungkan konsep kecerdasan buatan dengan algoritma penjadwalan dalam upaya meningkatkan efisiensi produksi dalam lingkungan manufaktur. Kami memperkenalkan pendekatan yang memanfaatkan kecerdasan komputasional, yaitu algoritma optimasi berbasis swarm intelligence, seperti algoritma PSO (Particle Swarm Optimization) dan algoritma ACO (Ant Colony Optimization). Tujuan utama penelitian ini adalah untuk mengoptimalkan jadwal produksi dengan meminimalkan waktu produksi dan biaya, sambil mempertimbangkan berbagai kendala produksi seperti kapasitas mesin, waktu pemrosesan, dan persyaratan bahan baku. Melalui eksperimen dan simulasi, kami membandingkan hasil dari algoritma swarm intelligence dengan pendekatan konvensional. Hasilnya menunjukkan bahwa algoritma PSO dan ACO dapat menghasilkan jadwal produksi yang lebih efisien, dengan waktu produksi yang lebih pendek dan biaya yang lebih rendah. Selain itu, algoritma ini mampu beradaptasi dengan perubahan dalam lingkungan produksi dan menghasilkan jadwal yang optimal bahkan dalam situasi yang kompleks. Penelitian ini menunjukkan potensi besar dari penggunaan kecerdasan komputasional dalam meningkatkan efisiensi dan produktivitas dalam industri manufaktur. Hasil penelitian ini dapat digunakan sebagai dasar untuk mengembangkan sistem penjadwalan cerdas yang dapat diterapkan dalam berbagai industri."[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0mvectorizer[0m [0;34m=[0m [0mjoblib[0m[0;34m.[0m[0mload[0m[0;34m([0m[0;34m'/content/drive/MyDrive/PPW/PPW/tf_vectorizer.pkl'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0ma[0m [0;34m=[0m [0mvectorizer[0m[0;34m.[0m[0mtransform[0m[0;34m([0m[0mdata[0m[0;34m)[0m[0;34m.[0m[0mtoarray[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0mb[0m [0;34m=[0m [0mlda[0m[0;34m.[0m[0mtransform[0m[0;34m([0m[0ma[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0mmodel[0m[0;34m.[0m[0mpredict[0m[0;34m([0m[0mb[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/joblib/numpy_pickle.py[0m in [0;36mload[0;34m(filename, mmap_mode)[0m
+[1;32m    648[0m             [0mobj[0m [0;34m=[0m [0m_unpickle[0m[0;34m([0m[0mfobj[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    649[0m     [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 650[0;31m         [0;32mwith[0m [0mopen[0m[0;34m([0m[0mfilename[0m[0;34m,[0m [0;34m'rb'[0m[0;34m)[0m [0;32mas[0m [0mf[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    651[0m             [0;32mwith[0m [0m_read_fileobject[0m[0;34m([0m[0mf[0m[0;34m,[0m [0mfilename[0m[0;34m,[0m [0mmmap_mode[0m[0;34m)[0m [0;32mas[0m [0mfobj[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    652[0m                 [0;32mif[0m [0misinstance[0m[0;34m([0m[0mfobj[0m[0;34m,[0m [0mstr[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '/content/drive/MyDrive/PPW/PPW/tf_vectorizer.pkl'
+
