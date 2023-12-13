@@ -1,0 +1,3311 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Proyek Akhir Pencarian Dan Penambangan WEB (Klasifikasi Berita dengan Reduksi Dimensi Latent Dirichlet Allocation (LDA) menggunakan Metode Naive Bayes) &#8212; Pencarian Dan Penambangan Web</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Pages/Proyek Tugas Akhir PPW';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Perhitungan Manual Ekstraksi Kata Menggunakan Textrank" href="Perhitungan%20Manual%20Textrank.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Pencarian Dan Penambangan Web - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Pencarian Dan Penambangan Web - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Pencarian dan Penambangan Web
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tugas</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="crawling_pta_trunojoyo.html">Tugas Crawling</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Preprocessing.html">Preprocessing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Scraping%20CNN%20Indonesia.html">Scraping Berita CNN Indonesia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Klasifikasi%20berita%20CNN%20Indonesia.html"><strong>Klasifikasi Berita dengan menggunanakan Closeness Centrality (CNN Indonesia)</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ekstraksi%20Kata%20Menggunakan%20Textrank.html"><strong>Ekstraksi Kata Menggunakan Textrank</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Perhitungan%20Manual%20Textrank.html"><strong>Perhitungan Manual Ekstraksi Kata Menggunakan Textrank</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Proyek Akhir Pencarian Dan Penambangan WEB (Klasifikasi Berita dengan Reduksi Dimensi Latent Dirichlet Allocation (LDA) menggunakan Metode Naive Bayes)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/SitiUlunNuhaKarimah127/PPW.git/blob/gh-pages/_sources/Pages/Proyek Tugas Akhir PPW.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SitiUlunNuhaKarimah127/PPW.git" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SitiUlunNuhaKarimah127/PPW.git/issues/new?title=Issue%20on%20page%20%2FPages/Proyek Tugas Akhir PPW.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Pages/Proyek Tugas Akhir PPW.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Proyek Akhir Pencarian Dan Penambangan WEB (Klasifikasi Berita dengan Reduksi Dimensi Latent Dirichlet Allocation (LDA) menggunakan Metode Naive Bayes)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployments">Deployments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cek-null-data">Cek NULL Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning">Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizing">Tokenizing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword-removal">Stopword Removal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tfidf">TFIDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deklarasi-x-dan-y-dengan-drop-fitur-dokumen-dan-label">Deklarasi X dan y dengan drop fitur dokumen dan label</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-data">Splitting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-with-lda"><strong>Modeling With LDA</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-best-parameter-untuk-lda">Mencari Best Parameter untuk LDA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deklarasi-k-alpha-dan-beta">Deklarasi K, Alpha, dan Beta</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lda">LDA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tampilan-hasil-reduksi-dimensi">Tampilan Hasil Reduksi Dimensi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-data-hasil-reduksi-dimensi">Save Data hasil reduksi dimensi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tampilan-proporsi-kata-di-tiap-topik">Tampilan proporsi kata di tiap topik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-naive-bayes-with-lda">Model Naive Bayes With LDA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict">Predict</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-model">Save Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-vectorizer">Save Vectorizer</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="proyek-akhir-pencarian-dan-penambangan-web-klasifikasi-berita-dengan-reduksi-dimensi-latent-dirichlet-allocation-lda-menggunakan-metode-naive-bayes">
+<h1>Proyek Akhir Pencarian Dan Penambangan WEB (Klasifikasi Berita dengan Reduksi Dimensi Latent Dirichlet Allocation (LDA) menggunakan Metode Naive Bayes)<a class="headerlink" href="#proyek-akhir-pencarian-dan-penambangan-web-klasifikasi-berita-dengan-reduksi-dimensi-latent-dirichlet-allocation-lda-menggunakan-metode-naive-bayes" title="Permalink to this heading">#</a></h1>
+<section id="deployments">
+<h2>Deployments<a class="headerlink" href="#deployments" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://app-project-ppw.streamlit.app/">Streamlit Deployments</a></p>
+</section>
+<section id="import-library">
+<h2>Import Library<a class="headerlink" href="#import-library" title="Permalink to this heading">#</a></h2>
+<p>Kode di bawah adalah implementasi dalam bahasa Python untuk pemrosesan teks dan pembelajaran mesin menggunakan beberapa pustaka. Berikut adalah penjelasan singkat untuk setiap bagian kode tersebut:</p>
+<ol class="arabic simple">
+<li><p><strong>Import Libraries/Modules:</strong>
+Import pustaka-pustaka yang dibutuhkan untuk pemrosesan teks dan pembelajaran mesin, termasuk scikit-learn (sklearn) untuk metrik evaluasi dan algoritma pembelajaran mesin, NLTK untuk pemrosesan bahasa alami, Pandas untuk manipulasi data, dan lain-lain.</p></li>
+<li><p><strong>Download Stopwords dan Punkt dari NLTK:</strong>
+Mengunduh dataset stopwords dan Punkt tokenizer dari NLTK. Stopwords digunakan untuk menghilangkan kata-kata umum yang tidak memberikan banyak informasi, dan Punkt digunakan untuk tokenisasi teks.</p></li>
+<li><p><strong>Filter Warnings:</strong>
+Menonaktifkan peringatan yang mungkin muncul selama eksekusi program untuk menghindari gangguan.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">LatentDirichletAllocation</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /root/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[nltk_data] Downloading package punkt to /root/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-dataset">
+<h2>Load Dataset<a class="headerlink" href="#load-dataset" title="Permalink to this heading">#</a></h2>
+<p>Kode di bawah menggunakan pustaka Pandas untuk membaca data dari file CSV yang berisi berita. Fungsi <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> digunakan untuk membaca file CSV yang berlokasi di ‘/content/drive/MyDrive/PPW/PPW/Resource/Data Berita CNN 1000 data.csv’. Hasilnya disimpan dalam variabel <code class="docutils literal notranslate"><span class="pre">df</span></code>, yang merupakan DataFrame Pandas. DataFrame adalah struktur data tabular yang memungkinkan manipulasi dan analisis data. Akhirnya, kode tersebut menampilkan isi DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/PPW/PPW/Resource/Data Berita CNN 1000 data.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-5a49e448-b8c2-4cd6-b496-4a7c2ed539b6" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Url</th>
+      <th>Judul</th>
+      <th>Tanggal</th>
+      <th>Artikel</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>https://www.cnnindonesia.com/teknologi/2023121...</td>
+      <td>Siapa yang Pertama Menyebar Narasi Kebencian s...</td>
+      <td>Rabu, 13 Des 2023 17:20 WIB</td>
+      <td>Isu negatif, hoaks, hingga ujaran kebencian me...</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>https://www.cnnindonesia.com/teknologi/2023121...</td>
+      <td>COP28 Serukan Peralihan Penggunaan Bahan Bakar...</td>
+      <td>Rabu, 13 Des 2023 15:51 WIB</td>
+      <td>Rancangan kesepakatan iklim PBB,COP28 pada har...</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>https://www.cnnindonesia.com/teknologi/2023121...</td>
+      <td>Rekor TikTok, Pengguna Habiskan Uang Rp156 Tri...</td>
+      <td>Rabu, 13 Des 2023 14:21 WIB</td>
+      <td>Platform media sosial TikTokmemecahkan rekor s...</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>https://www.cnnindonesia.com/teknologi/2023121...</td>
+      <td>Kemenangan Epic, Google Tumbang di Sidang Anti...</td>
+      <td>Rabu, 13 Des 2023 12:51 WIB</td>
+      <td>Epic Games, pembuat gim 'Fortnite' menang di p...</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>https://www.cnnindonesia.com/teknologi/2023121...</td>
+      <td>Mengenal JAKI, Aplikasi yang Dipamerkan Anies ...</td>
+      <td>Rabu, 13 Des 2023 10:05 WIB</td>
+      <td>Aplikasi JAKImendapat sorotan warganet usai ca...</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1495</th>
+      <td>https://www.cnnindonesia.com/olahraga/20231127...</td>
+      <td>Fabio Di Giannantonio Resmi Gabung VR46 di Mot...</td>
+      <td>Senin, 27 Nov 2023 18:24 WIB</td>
+      <td>TimVR46 resmi mengumumkan perekrutan Fabio Di ...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1496</th>
+      <td>https://www.cnnindonesia.com/olahraga/20231127...</td>
+      <td>Bezzecchi Diklaim Lontarkan Kata-kata Kasar ke...</td>
+      <td>Senin, 27 Nov 2023 16:44 WIB</td>
+      <td>Marc Marquezmenyebut Marco Bezzecchi melontark...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1497</th>
+      <td>https://www.cnnindonesia.com/olahraga/20231127...</td>
+      <td>Jadwal Prancis vs Mali di Semifinal Piala Duni...</td>
+      <td>Senin, 27 Nov 2023 16:17 WIB</td>
+      <td>DuelPrancis U-17 vsMali akan terjadi dalam sem...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1498</th>
+      <td>https://www.cnnindonesia.com/olahraga/20231127...</td>
+      <td>Jadwal Argentina vs Jerman di Semifinal Piala ...</td>
+      <td>Senin, 27 Nov 2023 15:03 WIB</td>
+      <td>Timnas Argentina U-17akan melawanJerman pada b...</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1499</th>
+      <td>https://www.cnnindonesia.com/olahraga/20231127...</td>
+      <td>Bezzecchi Labrak Marquez di Ruang Istirahat Honda</td>
+      <td>Senin, 27 Nov 2023 14:37 WIB</td>
+      <td>Pembalap VR46 Marco Bezzecchi melabrakMarc Mar...</td>
+      <td>Olahraga</td>
+    </tr>
+  </tbody>
+</table>
+<p>1500 rows × 5 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-5a49e448-b8c2-4cd6-b496-4a7c2ed539b6')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-5a49e448-b8c2-4cd6-b496-4a7c2ed539b6 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-5a49e448-b8c2-4cd6-b496-4a7c2ed539b6');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+<section id="cek-null-data">
+<h2>Cek NULL Data<a class="headerlink" href="#cek-null-data" title="Permalink to this heading">#</a></h2>
+<p>Kode <code class="docutils literal notranslate"><span class="pre">df.isnull().sum()</span></code> digunakan untuk menghitung jumlah nilai null di setiap kolom dalam DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>. Hasilnya adalah Series Pandas yang menunjukkan berapa banyak nilai null yang terdapat pada masing-masing kolom data. Pengecekan ini membantu identifikasi dan penanganan awal terhadap nilai null dalam dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Url         0
+Judul       0
+Tanggal     0
+Artikel     0
+Category    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cleaning">
+<h2>Cleaning<a class="headerlink" href="#cleaning" title="Permalink to this heading">#</a></h2>
+<p>Kode di bawah mendefinisikan fungsi <code class="docutils literal notranslate"><span class="pre">cleaning</span></code> yang bertujuan membersihkan teks dari karakter non-alfabet dan spasi yang tidak diinginkan. Proses pembersihan ini kemudian diterapkan pada kolom ‘Artikel’ dalam DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>, dan hasilnya disimpan dalam kolom baru ‘Cleaning’. Hasil akhir berupa DataFrame yang berisi teks yang telah dibersihkan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cleaning</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^a-zA-Z\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">text</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cleaning&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Artikel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">cleaning</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cleaning&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       Isu negatif hoaks hingga ujaran kebencian meng...
+1       Rancangan kesepakatan iklim PBBCOP pada hari R...
+2       Platform media sosial TikTokmemecahkan rekor s...
+3       Epic Games pembuat gim Fortnite menang di peng...
+4       Aplikasi JAKImendapat sorotan warganet usai ca...
+                              ...                        
+1495    TimVR resmi mengumumkan perekrutan Fabio Di Gi...
+1496    Marc Marquezmenyebut Marco Bezzecchi melontark...
+1497    DuelPrancis U vsMali akan terjadi dalam semifi...
+1498    Timnas Argentina Uakan melawanJerman pada baba...
+1499    Pembalap VR Marco Bezzecchi melabrakMarc Marqu...
+Name: Cleaning, Length: 1500, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tokenizing">
+<h2>Tokenizing<a class="headerlink" href="#tokenizing" title="Permalink to this heading">#</a></h2>
+<p>Kode di bawah mendefinisikan fungsi <code class="docutils literal notranslate"><span class="pre">tokenizer</span></code> yang mengonversi teks menjadi huruf kecil dan kemudian melakukan tokenisasi kata. Proses tokenisasi ini diterapkan pada kolom ‘Cleaning’ dalam DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>, dan hasilnya disimpan dalam kolom baru ‘Tokenizing’. Hasil akhirnya berupa DataFrame yang berisi daftar kata-kata yang telah dihasilkan dari tokenisasi teks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tokenizer</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tokenizing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cleaning&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tokenizing&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       [isu, negatif, hoaks, hingga, ujaran, kebencia...
+1       [rancangan, kesepakatan, iklim, pbbcop, pada, ...
+2       [platform, media, sosial, tiktokmemecahkan, re...
+3       [epic, games, pembuat, gim, fortnite, menang, ...
+4       [aplikasi, jakimendapat, sorotan, warganet, us...
+                              ...                        
+1495    [timvr, resmi, mengumumkan, perekrutan, fabio,...
+1496    [marc, marquezmenyebut, marco, bezzecchi, melo...
+1497    [duelprancis, u, vsmali, akan, terjadi, dalam,...
+1498    [timnas, argentina, uakan, melawanjerman, pada...
+1499    [pembalap, vr, marco, bezzecchi, melabrakmarc,...
+Name: Tokenizing, Length: 1500, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="stopword-removal">
+<h2>Stopword Removal<a class="headerlink" href="#stopword-removal" title="Permalink to this heading">#</a></h2>
+<p>Kode di bawah melakukan penghapusan stopwords dari setiap baris teks dalam kolom ‘Tokenizing’ DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code> yang telah melibatkan beberapa langkah:</p>
+<ol class="arabic simple">
+<li><p><strong>Pembuatan Daftar Stopwords (corpus):</strong>
+Membuat daftar stopwords dalam bahasa Indonesia menggunakan modul <code class="docutils literal notranslate"><span class="pre">stopwords</span></code> dari NLTK.</p></li>
+<li><p><strong>Fungsi Stopword Removal:</strong>
+Fungsi <code class="docutils literal notranslate"><span class="pre">stopwordText</span></code> dibuat untuk menghapus stopwords dari daftar kata-kata dan mengembalikan daftar kata tanpa stopwords.</p></li>
+<li><p><strong>Penerapan Stopword Removal pada DataFrame:</strong>
+Mengaplikasikan fungsi <code class="docutils literal notranslate"><span class="pre">stopwordText</span></code> pada setiap baris dalam kolom ‘Tokenizing’, dan hasilnya disimpan dalam kolom baru ‘Stopword Removal’.</p></li>
+<li><p><strong>Gabungan Token menjadi Kalimat Utuh:</strong>
+Menggabungkan kembali token-token yang telah dihasilkan setelah penghapusan stopwords menjadi satu kalimat utuh. Hasilnya disimpan dalam kolom baru ‘Full Text’.</p></li>
+<li><p><strong>Menampilkan DataFrame Hasil Akhir:</strong>
+Menampilkan kolom ‘Full Text’ dari DataFrame, yang berisi teks yang telah melalui proses penghapusan stopwords dan penggabungan token.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corpus</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">stopwordText</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+ <span class="k">return</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">]</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Stopword Removal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Tokenizing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">stopwordText</span><span class="p">)</span>
+
+<span class="c1"># Gabungkan kembali token menjadi kalimat utuh</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Full Text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Stopword Removal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Full Text&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       isu negatif hoaks ujaran kebencian pengungsi r...
+1       rancangan kesepakatan iklim pbbcop rabu menyer...
+2       platform media sosial tiktokmemecahkan rekor s...
+3       epic games pembuat gim fortnite menang pengadi...
+4       aplikasi jakimendapat sorotan warganet calon p...
+                              ...                        
+1495    timvr resmi mengumumkan perekrutan fabio giann...
+1496    marc marquezmenyebut marco bezzecchi melontark...
+1497    duelprancis u vsmali semifinal piala dunia u s...
+1498    timnas argentina uakan melawanjerman babak sem...
+1499    pembalap vr marco bezzecchi melabrakmarc marqu...
+Name: Full Text, Length: 1500, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tfidf">
+<h2>TFIDF<a class="headerlink" href="#tfidf" title="Permalink to this heading">#</a></h2>
+<p>Kode di bawah mendefinisikan fungsi <code class="docutils literal notranslate"><span class="pre">tfidf</span></code> untuk menghitung skor TF-IDF dari teks dokumen menggunakan TfidfVectorizer dari scikit-learn. Fungsi ini kemudian diterapkan pada DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>, menghasilkan matriks TF-IDF dan DataFrame akhir yang berisi skor TF-IDF untuk setiap kata dalam setiap dokumen, bersama dengan teks dokumen asli dan kategorinya. Proses ini membantu mengubah data teks menjadi representasi numerik yang dapat digunakan dalam model pembelajaran mesin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tfidf</span><span class="p">(</span><span class="n">dokumen</span><span class="p">,</span> <span class="n">category</span><span class="p">):</span>
+  <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dokumen</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+  <span class="n">terms</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+
+  <span class="n">final_tfidf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">terms</span><span class="p">)</span>
+  <span class="n">final_tfidf</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Dokumen&#39;</span><span class="p">,</span> <span class="n">dokumen</span><span class="p">)</span>
+  <span class="n">final_tfidf</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">final_tfidf</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span> <span class="n">category</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="n">vectorizer</span><span class="p">,</span> <span class="n">final_tfidf</span><span class="p">)</span>
+
+<span class="n">tfidf_vectorizer</span><span class="p">,</span> <span class="n">final_tfidf</span> <span class="o">=</span> <span class="n">tfidf</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Full Text&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Category&#39;</span><span class="p">])</span>
+<span class="n">final_tfidf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-bb2f8c9b-a6ee-4f38-8a0f-134b014e7eb6" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Dokumen</th>
+      <th>aaa</th>
+      <th>aal</th>
+      <th>aali</th>
+      <th>aalx</th>
+      <th>aaron</th>
+      <th>aaui</th>
+      <th>abad</th>
+      <th>abadabad</th>
+      <th>abadi</th>
+      <th>...</th>
+      <th>zulhendrizal</th>
+      <th>zulikflihasanuntuk</th>
+      <th>zulkifil</th>
+      <th>zulkifilmengatakan</th>
+      <th>zulkifli</th>
+      <th>zulkifliberharap</th>
+      <th>zulkiflimengimbaupemerintah</th>
+      <th>zulkiflimenyebut</th>
+      <th>zurich</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>isu negatif hoaks ujaran kebencian pengungsi r...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>rancangan kesepakatan iklim pbbcop rabu menyer...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>platform media sosial tiktokmemecahkan rekor s...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>epic games pembuat gim fortnite menang pengadi...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>aplikasi jakimendapat sorotan warganet calon p...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1495</th>
+      <td>timvr resmi mengumumkan perekrutan fabio giann...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1496</th>
+      <td>marc marquezmenyebut marco bezzecchi melontark...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1497</th>
+      <td>duelprancis u vsmali semifinal piala dunia u s...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1498</th>
+      <td>timnas argentina uakan melawanjerman babak sem...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1499</th>
+      <td>pembalap vr marco bezzecchi melabrakmarc marqu...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>Olahraga</td>
+    </tr>
+  </tbody>
+</table>
+<p>1500 rows × 28079 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-bb2f8c9b-a6ee-4f38-8a0f-134b014e7eb6')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-bb2f8c9b-a6ee-4f38-8a0f-134b014e7eb6 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-bb2f8c9b-a6ee-4f38-8a0f-134b014e7eb6');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+<section id="deklarasi-x-dan-y-dengan-drop-fitur-dokumen-dan-label">
+<h2>Deklarasi X dan y dengan drop fitur dokumen dan label<a class="headerlink" href="#deklarasi-x-dan-y-dengan-drop-fitur-dokumen-dan-label" title="Permalink to this heading">#</a></h2>
+<p>Kode dibawah membuat variabel <code class="docutils literal notranslate"><span class="pre">X</span></code> yang berisi matriks fitur untuk digunakan dalam model pembelajaran mesin. Matriks fitur ini diperoleh dari DataFrame <code class="docutils literal notranslate"><span class="pre">final_tfidf</span></code> dengan menghapus dua kolom, yaitu ‘Dokumen’ dan ‘Category’. Variabel <code class="docutils literal notranslate"><span class="pre">X</span></code> dapat digunakan sebagai input untuk melatih model machine learning, di mana setiap baris mewakili dokumen dan setiap kolom mewakili fitur dengan skor TF-IDF.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">final_tfidf</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Dokumen&#39;</span><span class="p">,</span> <span class="s1">&#39;Category&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-2f35ed74-a21e-4f2d-81b3-b6e8d0c02187" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aaa</th>
+      <th>aal</th>
+      <th>aali</th>
+      <th>aalx</th>
+      <th>aaron</th>
+      <th>aaui</th>
+      <th>abad</th>
+      <th>abadabad</th>
+      <th>abadi</th>
+      <th>abadipt</th>
+      <th>...</th>
+      <th>zulhassukses</th>
+      <th>zulhendrizal</th>
+      <th>zulikflihasanuntuk</th>
+      <th>zulkifil</th>
+      <th>zulkifilmengatakan</th>
+      <th>zulkifli</th>
+      <th>zulkifliberharap</th>
+      <th>zulkiflimengimbaupemerintah</th>
+      <th>zulkiflimenyebut</th>
+      <th>zurich</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1495</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1496</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1497</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1498</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1499</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1500 rows × 28077 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-2f35ed74-a21e-4f2d-81b3-b6e8d0c02187')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-2f35ed74-a21e-4f2d-81b3-b6e8d0c02187 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-2f35ed74-a21e-4f2d-81b3-b6e8d0c02187');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+<p>Kode dibawah membuat variabel <code class="docutils literal notranslate"><span class="pre">y</span></code> yang berisi target atau label dari setiap dokumen dalam DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code>. Variabel <code class="docutils literal notranslate"><span class="pre">y</span></code> ini menyimpan informasi kategori atau kelas dari masing-masing dokumen. Sebagai contoh, jika dokumen pertama memiliki label ‘Politik’, maka nilai <code class="docutils literal notranslate"><span class="pre">y</span></code> untuk dokumen tersebut akan ‘Politik’. Variabel <code class="docutils literal notranslate"><span class="pre">y</span></code> ini biasanya digunakan sebagai target yang ingin diprediksi dalam model pembelajaran mesin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Category&#39;</span><span class="p">]</span>
+<span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       Teknologi
+1       Teknologi
+2       Teknologi
+3       Teknologi
+4       Teknologi
+          ...    
+1495     Olahraga
+1496     Olahraga
+1497     Olahraga
+1498     Olahraga
+1499     Olahraga
+Name: Category, Length: 1500, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="splitting-data">
+<h2>Splitting Data<a class="headerlink" href="#splitting-data" title="Permalink to this heading">#</a></h2>
+<p>Kode di bawah menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> dari scikit-learn untuk membagi data menjadi dua set: set pelatihan (<code class="docutils literal notranslate"><span class="pre">X_train</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train</span></code>) dan set pengujian (<code class="docutils literal notranslate"><span class="pre">X_test</span></code>, <code class="docutils literal notranslate"><span class="pre">y_test</span></code>). Proporsi data yang dialokasikan untuk set pengujian adalah 30%, dan seed (random_state) sebesar 42 digunakan untuk memastikan reproduktibilitas hasil pembagian data. Set pelatihan digunakan untuk melatih model, sedangkan set pengujian digunakan untuk menguji seberapa baik model dapat menggeneralisasi ke data yang tidak dilihat sebelumnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modeling-with-lda">
+<h2><strong>Modeling With LDA</strong><a class="headerlink" href="#modeling-with-lda" title="Permalink to this heading">#</a></h2>
+<section id="mencari-best-parameter-untuk-lda">
+<h3>Mencari Best Parameter untuk LDA<a class="headerlink" href="#mencari-best-parameter-untuk-lda" title="Permalink to this heading">#</a></h3>
+<p>Kode dibawah mendefinisikan fungsi <code class="docutils literal notranslate"><span class="pre">find_best_lda</span></code> untuk mencari kombinasi parameter terbaik dalam model Latent Dirichlet Allocation (LDA) dan model Naive Bayes. Fungsi ini melakukan eksplorasi sejumlah kombinasi parameter (jumlah topik, alpha, dan beta), melatih model, dan menyimpan parameter terbaik beserta model dan hasil pelatihan. Selanjutnya, fungsi ini memanggil dengan matriks fitur pelatihan dan pengujian (<code class="docutils literal notranslate"><span class="pre">X_train</span></code> dan <code class="docutils literal notranslate"><span class="pre">X_test</span></code>), serta daftar nilai untuk jumlah topik, alpha, dan beta. Hasilnya disimpan dalam variabel <code class="docutils literal notranslate"><span class="pre">best_param</span></code> untuk parameter terbaik dan <code class="docutils literal notranslate"><span class="pre">history</span></code> untuk mencatat hasil eksperimen. Proses ini membantu dalam menemukan konfigurasi parameter yang memberikan akurasi terbaik pada model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_best_lda</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">n_components</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+  <span class="n">looping</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">best</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;k&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;beta&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;accuracy&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;lda&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;lda_Xtrain&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;lda_Xtest&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}</span>
+  <span class="n">history</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Pengujian Ke&quot;</span><span class="p">,</span> <span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="s2">&quot;Alpha&quot;</span><span class="p">,</span> <span class="s2">&quot;Beta&quot;</span><span class="p">,</span> <span class="s2">&quot;Accuracy&quot;</span><span class="p">])</span>
+
+  <span class="c1"># Menambahkan tqdm pada loop terluar</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">n_components</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alpha</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">beta</span><span class="p">:</span>
+        <span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">doc_topic_prior</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">topic_word_prior</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">lda_Xtrain</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">)</span>
+        <span class="n">lda_Xtest</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>
+
+        <span class="c1"># Membuat model Naive Bayes</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+
+        <span class="c1"># Melatih model pada data pelatihan</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">lda_Xtrain</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+        <span class="c1"># Melakukan prediksi pada data pengujian</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">lda_Xtest</span><span class="p">)</span>
+
+        <span class="c1"># Menghitung akurasi</span>
+        <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah Topik: </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">, Alpha: </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">, Beta: </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">, Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">accuracy</span> <span class="o">&gt;</span> <span class="n">best</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]:</span>
+          <span class="n">best</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracy</span>
+          <span class="n">best</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span>
+          <span class="n">best</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+          <span class="n">best</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
+          <span class="n">best</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
+          <span class="n">best</span><span class="p">[</span><span class="s1">&#39;lda&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lda</span>
+          <span class="n">best</span><span class="p">[</span><span class="s1">&#39;lda_Xtrain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lda_Xtrain</span>
+          <span class="n">best</span><span class="p">[</span><span class="s1">&#39;lda_Xtest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lda_Xtest</span>
+
+        <span class="n">history</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Pengujian Ke- </span><span class="si">{</span><span class="n">looping</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">]</span>
+        <span class="n">looping</span> <span class="o">+=</span> <span class="mi">1</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">history</span><span class="p">)</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+<span class="n">best_param</span><span class="p">,</span> <span class="n">history</span> <span class="o">=</span> <span class="n">find_best_lda</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Topik: 3, Alpha: 0.3, Beta: 0.1, Accuracy: 0.6022222222222222
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Topik: 3, Alpha: 0.3, Beta: 0.2, Accuracy: 0.5355555555555556
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Topik: 3, Alpha: 0.4, Beta: 0.1, Accuracy: 0.48444444444444446
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Topik: 3, Alpha: 0.4, Beta: 0.2, Accuracy: 0.6555555555555556
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-11-c5986cd47610&gt;</span> in <span class="ni">&lt;cell line: 45&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="n">alpha</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="n">beta</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+<span class="ne">---&gt; </span><span class="mi">45</span> <span class="n">best_param</span><span class="p">,</span> <span class="n">history</span> <span class="o">=</span> <span class="n">find_best_lda</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-11-c5986cd47610&gt;</span> in <span class="ni">find_best_lda</span><span class="nt">(Xtrain, Xtest, n_components, alpha, beta)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>       <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">beta</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>         <span class="n">lda</span> <span class="o">=</span> <span class="n">LatentDirichletAllocation</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">doc_topic_prior</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">topic_word_prior</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">11</span>         <span class="n">lda_Xtrain</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="n">lda_Xtest</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> 
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/utils/_set_output.py</span> in <span class="ni">wrapped</span><span class="nt">(self, X, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">140</span>         <span class="n">data_to_wrap</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_to_wrap</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>             <span class="c1"># only wrap the first output for cross decomposition</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/base.py</span> in <span class="ni">fit_transform</span><span class="nt">(self, X, y, **fit_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>         <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="c1"># fit method of arity 1 (unsupervised transformation)</span>
+<span class="ne">--&gt; </span><span class="mi">878</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">fit_params</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>             <span class="c1"># fit method of arity 2 (supervised transformation)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_lda.py</span> in <span class="ni">fit</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>                     <span class="c1"># batch update</span>
+<span class="ne">--&gt; </span><span class="mi">668</span>                     <span class="bp">self</span><span class="o">.</span><span class="n">_em_step</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">669</span>                         <span class="n">X</span><span class="p">,</span> <span class="n">total_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">batch_update</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span>                     <span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_lda.py</span> in <span class="ni">_em_step</span><span class="nt">(self, X, total_samples, batch_update, parallel)</span>
+<span class="g g-Whitespace">    </span><span class="mi">515</span> 
+<span class="g g-Whitespace">    </span><span class="mi">516</span>         <span class="c1"># E-step</span>
+<span class="ne">--&gt; </span><span class="mi">517</span>         <span class="n">_</span><span class="p">,</span> <span class="n">suff_stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_e_step</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">518</span>             <span class="n">X</span><span class="p">,</span> <span class="n">cal_sstats</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_init</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span>         <span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_lda.py</span> in <span class="ni">_e_step</span><span class="nt">(self, X, cal_sstats, random_init, parallel)</span>
+<span class="g g-Whitespace">    </span><span class="mi">458</span>         <span class="k">if</span> <span class="n">parallel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span>             <span class="n">parallel</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">460</span>         <span class="n">results</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">461</span>             <span class="n">delayed</span><span class="p">(</span><span class="n">_update_doc_distribution</span><span class="p">)(</span>
+<span class="g g-Whitespace">    </span><span class="mi">462</span>                 <span class="n">X</span><span class="p">[</span><span class="n">idx_slice</span><span class="p">,</span> <span class="p">:],</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/utils/parallel.py</span> in <span class="ni">__call__</span><span class="nt">(self, iterable)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>             <span class="k">for</span> <span class="n">delayed_func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="n">iterable</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>         <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">63</span>         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">iterable_with_config</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> 
+<span class="g g-Whitespace">     </span><span class="mi">65</span> 
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/joblib/parallel.py</span> in <span class="ni">__call__</span><span class="nt">(self, iterable)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1861</span>             <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_sequential_output</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1862</span>             <span class="nb">next</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1863</span>             <span class="k">return</span> <span class="n">output</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_generator</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1864</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1865</span>         <span class="c1"># Let&#39;s create an ID that uniquely identifies the current call. If the</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/joblib/parallel.py</span> in <span class="ni">_get_sequential_output</span><span class="nt">(self, iterable)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1790</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">n_dispatched_batches</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">   </span><span class="mi">1791</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">n_dispatched_tasks</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">-&gt; </span><span class="mi">1792</span>                 <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1793</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">n_completed_tasks</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">   </span><span class="mi">1794</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">print_progress</span><span class="p">()</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/utils/parallel.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>             <span class="n">config</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>         <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">123</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/sklearn/decomposition/_lda.py</span> in <span class="ni">_update_doc_distribution</span><span class="nt">(X, exp_topic_word_distr, doc_topic_prior, max_doc_update_iter, mean_change_tol, cal_sstats, random_state)</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>             <span class="n">cnts</span> <span class="o">=</span> <span class="n">X_data</span><span class="p">[</span><span class="n">X_indptr</span><span class="p">[</span><span class="n">idx_d</span><span class="p">]</span> <span class="p">:</span> <span class="n">X_indptr</span><span class="p">[</span><span class="n">idx_d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">123</span>             <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">idx_d</span><span class="p">,</span> <span class="p">:])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>             <span class="n">cnts</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">idx_d</span><span class="p">,</span> <span class="n">ids</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span> 
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/numpy/core/overrides.py</span> in <span class="ni">nonzero</span><span class="nt">(*args, **kwargs)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/numpy/core/fromnumeric.py</span> in <span class="ni">nonzero</span><span class="nt">(a)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1956</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1957</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1958</span><span class="s2">     return _wrapfunc(a, &#39;nonzero&#39;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1959</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1960</span><span class="s2"> </span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/numpy/core/fromnumeric.py</span> in <span class="ni">_wrapfunc</span><span class="nt">(obj, method, *args, **kwds)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span><span class="s2">     try:</span>
+<span class="ne">---&gt; </span><span class="mi">57</span><span class="s2">         return bound(*args, **kwds)</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span><span class="s2">     except TypeError:</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span><span class="s2">         # A TypeError occurs if the object does have such a method in its</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Variabel <code class="docutils literal notranslate"><span class="pre">best_param</span></code> berisi hasil terbaik dari eksperimen untuk mencari parameter optimal pada model Latent Dirichlet Allocation (LDA) dan model Naive Bayes. Informasi ini dicatat dari hasil pelatihan dan pengujian sejumlah kombinasi parameter (jumlah topik, alpha, dan beta) pada dataset.</p>
+<p>Struktur <code class="docutils literal notranslate"><span class="pre">best_param</span></code> adalah sebuah dictionary dengan beberapa kunci (keys) yang menyimpan informasi terbaik sebagai berikut:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'k'</span></code>: Jumlah topik terbaik yang ditemukan.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'alpha'</span></code>: Nilai alpha terbaik.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'beta'</span></code>: Nilai beta terbaik.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'accuracy'</span></code>: Akurasi terbaik yang dicapai pada model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'model'</span></code>: Model Naive Bayes terbaik yang telah dilatih.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'lda'</span></code>: Model LDA terbaik.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'lda_Xtrain'</span></code>: Representasi dokumen dalam ruang topik dari data pelatihan.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'lda_Xtest'</span></code>: Representasi dokumen dalam ruang topik dari data pengujian.</p></li>
+</ul>
+<p>Variabel <code class="docutils literal notranslate"><span class="pre">best_param</span></code> ini menyediakan hasil optimal dari eksperimen dan dapat digunakan untuk mengevaluasi performa model terpilih pada data pengujian.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_param</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;k&#39;: 4,
+ &#39;alpha&#39;: 0.4,
+ &#39;beta&#39;: 0.2,
+ &#39;accuracy&#39;: 0.7288888888888889,
+ &#39;model&#39;: GaussianNB(),
+ &#39;lda&#39;: LatentDirichletAllocation(doc_topic_prior=0.4, n_components=4,
+                           topic_word_prior=0.2),
+ &#39;lda_Xtrain&#39;: array([[0.28276356, 0.57711118, 0.03252148, 0.10760378],
+        [0.05128478, 0.04520822, 0.0426631 , 0.8608439 ],
+        [0.64823988, 0.04753441, 0.1143168 , 0.18990892],
+        ...,
+        [0.04703812, 0.85972139, 0.04578296, 0.04745753],
+        [0.05108968, 0.05137631, 0.05053068, 0.84700332],
+        [0.05243489, 0.05118098, 0.05132394, 0.8450602 ]]),
+ &#39;lda_Xtest&#39;: array([[0.05402348, 0.04586847, 0.04570473, 0.85440332],
+        [0.36905552, 0.07510736, 0.0512546 , 0.50458251],
+        [0.63132314, 0.12768622, 0.04248796, 0.19850269],
+        ...,
+        [0.39312557, 0.07113671, 0.04673263, 0.48900509],
+        [0.13597252, 0.07628387, 0.04939392, 0.73834969],
+        [0.05093968, 0.04850218, 0.04640635, 0.85415179]])}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Variabel <code class="docutils literal notranslate"><span class="pre">history</span></code> adalah sebuah DataFrame Pandas yang merekam hasil eksperimen untuk mencari parameter terbaik pada model Latent Dirichlet Allocation (LDA) dan model Naive Bayes. DataFrame ini menyimpan sejarah akurasi dari berbagai percobaan dengan kombinasi parameter yang berbeda, seperti jumlah topik, alpha, dan beta. Masing-masing baris dalam DataFrame merepresentasikan satu percobaan dengan informasi tentang nomor eksperimen, jumlah topik, nilai alpha, nilai beta, dan akurasi yang dicapai pada model. <code class="docutils literal notranslate"><span class="pre">history</span></code> dapat digunakan untuk menganalisis perubahan performa model seiring variasi parameter yang diuji.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-28adfcdf-4205-48bb-9b4f-7c1182ffb131" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Pengujian Ke</th>
+      <th>K</th>
+      <th>Alpha</th>
+      <th>Beta</th>
+      <th>Accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Pengujian Ke- 1</td>
+      <td>3</td>
+      <td>0.3</td>
+      <td>0.1</td>
+      <td>0.502222</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Pengujian Ke- 2</td>
+      <td>3</td>
+      <td>0.3</td>
+      <td>0.2</td>
+      <td>0.457778</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Pengujian Ke- 3</td>
+      <td>3</td>
+      <td>0.4</td>
+      <td>0.1</td>
+      <td>0.555556</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Pengujian Ke- 4</td>
+      <td>3</td>
+      <td>0.4</td>
+      <td>0.2</td>
+      <td>0.537778</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Pengujian Ke- 5</td>
+      <td>4</td>
+      <td>0.3</td>
+      <td>0.1</td>
+      <td>0.693333</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Pengujian Ke- 6</td>
+      <td>4</td>
+      <td>0.3</td>
+      <td>0.2</td>
+      <td>0.495556</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Pengujian Ke- 7</td>
+      <td>4</td>
+      <td>0.4</td>
+      <td>0.1</td>
+      <td>0.624444</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Pengujian Ke- 8</td>
+      <td>4</td>
+      <td>0.4</td>
+      <td>0.2</td>
+      <td>0.728889</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Pengujian Ke- 9</td>
+      <td>5</td>
+      <td>0.3</td>
+      <td>0.1</td>
+      <td>0.564444</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Pengujian Ke- 10</td>
+      <td>5</td>
+      <td>0.3</td>
+      <td>0.2</td>
+      <td>0.600000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Pengujian Ke- 11</td>
+      <td>5</td>
+      <td>0.4</td>
+      <td>0.1</td>
+      <td>0.522222</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Pengujian Ke- 12</td>
+      <td>5</td>
+      <td>0.4</td>
+      <td>0.2</td>
+      <td>0.728889</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-28adfcdf-4205-48bb-9b4f-7c1182ffb131')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-28adfcdf-4205-48bb-9b4f-7c1182ffb131 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-28adfcdf-4205-48bb-9b4f-7c1182ffb131');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-745968b9-566e-42c7-aec0-5aad1d84ef60">
+  <button class="colab-df-quickchart" onclick="quickchart('df-745968b9-566e-42c7-aec0-5aad1d84ef60')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-745968b9-566e-42c7-aec0-5aad1d84ef60 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+<p>Kode <code class="docutils literal notranslate"><span class="pre">history.to_csv(&quot;history.csv&quot;,</span> <span class="pre">index=False)</span></code> digunakan untuk menyimpan DataFrame <code class="docutils literal notranslate"><span class="pre">history</span></code> dalam bentuk file CSV. Berikut penjelasan singkatnya:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">history.to_csv(&quot;history.csv&quot;,</span> <span class="pre">index=False)</span></code>:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">history.to_csv</span></code>: Metode Pandas untuk menyimpan DataFrame ke dalam file CSV.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;history.csv&quot;</span></code>: Nama file CSV yang akan dibuat atau ditimpa.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index=False</span></code>: Parameter yang mengindikasikan untuk tidak menyimpan indeks baris DataFrame ke dalam file CSV.</p></li>
+</ul>
+</li>
+</ul>
+<p>Dengan menjalankan kode ini, DataFrame <code class="docutils literal notranslate"><span class="pre">history</span></code> akan disimpan sebagai file CSV dengan nama “history.csv” tanpa menyertakan indeks baris dalam file tersebut. Ini memungkinkan penggunaan file CSV untuk analisis atau visualisasi di luar lingkungan Python atau dalam proyek lainnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;history.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="deklarasi-k-alpha-dan-beta">
+<h3>Deklarasi K, Alpha, dan Beta<a class="headerlink" href="#deklarasi-k-alpha-dan-beta" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="lda">
+<h3>LDA<a class="headerlink" href="#lda" title="Permalink to this heading">#</a></h3>
+<p>Kode di bawah mengambil informasi terbaik dari hasil eksperimen yang disimpan dalam variabel <code class="docutils literal notranslate"><span class="pre">best_param</span></code> untuk digunakan lebih lanjut. Berikut penjelasan singkatnya:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">lda</span> <span class="pre">=</span> <span class="pre">best_param['lda']</span></code>:</strong></p>
+<ul>
+<li><p>Mengambil model Latent Dirichlet Allocation (LDA) terbaik dari <code class="docutils literal notranslate"><span class="pre">best_param</span></code> dan menyimpannya dalam variabel <code class="docutils literal notranslate"><span class="pre">lda</span></code>. Model ini memiliki konfigurasi parameter terbaik yang ditemukan selama eksperimen.</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">lda_x_train</span> <span class="pre">=</span> <span class="pre">best_param['lda_Xtrain']</span></code>:</strong></p>
+<ul>
+<li><p>Mengambil representasi dokumen dalam ruang topik dari data pelatihan (hasil transformasi LDA) dan menyimpannya dalam variabel <code class="docutils literal notranslate"><span class="pre">lda_x_train</span></code>. Representasi ini digunakan sebagai matriks fitur untuk melatih model machine learning.</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">lda_x_test</span> <span class="pre">=</span> <span class="pre">best_param['lda_Xtest']</span></code>:</strong></p>
+<ul>
+<li><p>Mengambil representasi dokumen dalam ruang topik dari data pengujian (hasil transformasi LDA) dan menyimpannya dalam variabel <code class="docutils literal notranslate"><span class="pre">lda_x_test</span></code>. Representasi ini digunakan sebagai matriks fitur untuk menguji model machine learning.</p></li>
+</ul>
+</li>
+</ul>
+<p>Dengan menyimpan hasil terbaik dari eksperimen pada <code class="docutils literal notranslate"><span class="pre">best_param</span></code>, kita dapat menggunakan model LDA yang optimal dan representasi dokumen dalam ruang topik yang dihasilkan pada tahap selanjutnya dalam analisis atau pemodelan data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lda</span> <span class="o">=</span> <span class="n">best_param</span><span class="p">[</span><span class="s1">&#39;lda&#39;</span><span class="p">]</span>
+<span class="n">lda_x_train</span> <span class="o">=</span> <span class="n">best_param</span><span class="p">[</span><span class="s1">&#39;lda_Xtrain&#39;</span><span class="p">]</span>
+<span class="n">lda_x_test</span> <span class="o">=</span> <span class="n">best_param</span><span class="p">[</span><span class="s1">&#39;lda_Xtest&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tampilan-hasil-reduksi-dimensi">
+<h3>Tampilan Hasil Reduksi Dimensi<a class="headerlink" href="#tampilan-hasil-reduksi-dimensi" title="Permalink to this heading">#</a></h3>
+<p>Kode di bawah membuat DataFrame baru (<code class="docutils literal notranslate"><span class="pre">output_proporsi_TD</span></code>) yang menunjukkan proporsi setiap topik dalam setiap dokumen berdasarkan hasil transformasi model Latent Dirichlet Allocation (LDA) pada data pelatihan. Proses ini melibatkan pembuatan nama kolom untuk masing-masing topik, penggabungan hasil transformasi LDA dengan teks dokumen asli, dan penambahan informasi kategori dokumen. Hasil akhirnya memberikan representasi yang lebih terstruktur tentang bagaimana setiap dokumen terdiri dari berbagai topik menurut model LDA yang optimal. DataFrame ini dapat digunakan untuk analisis lebih lanjut atau sebagai input untuk tahap-tahap selanjutnya dalam pemrosesan atau pemodelan data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topik_columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Topik </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">best_param</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">dokumen</span> <span class="o">=</span> <span class="n">final_tfidf</span><span class="p">[</span><span class="s1">&#39;Dokumen&#39;</span><span class="p">]</span>
+<span class="n">output_proporsi_TD</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lda_x_train</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">topik_columns</span><span class="p">)</span>
+<span class="n">output_proporsi_TD</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Dokumen&#39;</span><span class="p">,</span> <span class="n">dokumen</span><span class="p">)</span>
+<span class="n">output_proporsi_TD</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">output_proporsi_TD</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="s1">&#39;Category&#39;</span><span class="p">,</span> <span class="n">final_tfidf</span><span class="p">[</span><span class="s1">&#39;Category&#39;</span><span class="p">])</span>
+<span class="n">output_proporsi_TD</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-63ecf169-ca7f-49aa-9d5f-9374af447625" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Dokumen</th>
+      <th>Topik 1</th>
+      <th>Topik 2</th>
+      <th>Topik 3</th>
+      <th>Topik 4</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>isu negatif hoaks ujaran kebencian pengungsi r...</td>
+      <td>0.282764</td>
+      <td>0.577111</td>
+      <td>0.032521</td>
+      <td>0.107604</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>rancangan kesepakatan iklim pbbcop rabu menyer...</td>
+      <td>0.051285</td>
+      <td>0.045208</td>
+      <td>0.042663</td>
+      <td>0.860844</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>platform media sosial tiktokmemecahkan rekor s...</td>
+      <td>0.648240</td>
+      <td>0.047534</td>
+      <td>0.114317</td>
+      <td>0.189909</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>epic games pembuat gim fortnite menang pengadi...</td>
+      <td>0.773926</td>
+      <td>0.050074</td>
+      <td>0.043751</td>
+      <td>0.132250</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>aplikasi jakimendapat sorotan warganet calon p...</td>
+      <td>0.105102</td>
+      <td>0.769604</td>
+      <td>0.043250</td>
+      <td>0.082044</td>
+      <td>Teknologi</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1045</th>
+      <td>kejadian patut ditiru lanjutan liga sepak bola...</td>
+      <td>0.070571</td>
+      <td>0.048774</td>
+      <td>0.045304</td>
+      <td>0.835351</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1046</th>
+      <td>manchester unitedakan menjamu bayern munchen l...</td>
+      <td>0.132950</td>
+      <td>0.528123</td>
+      <td>0.041669</td>
+      <td>0.297257</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1047</th>
+      <td>wasit halil umut melerasal turki sorotan korba...</td>
+      <td>0.047038</td>
+      <td>0.859721</td>
+      <td>0.045783</td>
+      <td>0.047458</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1048</th>
+      <td>tragedi pemukulan wasit halil umut melerdi lig...</td>
+      <td>0.051090</td>
+      <td>0.051376</td>
+      <td>0.050531</td>
+      <td>0.847003</td>
+      <td>Olahraga</td>
+    </tr>
+    <tr>
+      <th>1049</th>
+      <td>megawati hangestri pertiwidan kawankawan daeje...</td>
+      <td>0.052435</td>
+      <td>0.051181</td>
+      <td>0.051324</td>
+      <td>0.845060</td>
+      <td>Olahraga</td>
+    </tr>
+  </tbody>
+</table>
+<p>1050 rows × 6 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-63ecf169-ca7f-49aa-9d5f-9374af447625')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-63ecf169-ca7f-49aa-9d5f-9374af447625 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-63ecf169-ca7f-49aa-9d5f-9374af447625');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-eed0e083-3001-4bbc-8918-5eda2e60f0e3">
+  <button class="colab-df-quickchart" onclick="quickchart('df-eed0e083-3001-4bbc-8918-5eda2e60f0e3')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-eed0e083-3001-4bbc-8918-5eda2e60f0e3 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="save-data-hasil-reduksi-dimensi">
+<h3>Save Data hasil reduksi dimensi<a class="headerlink" href="#save-data-hasil-reduksi-dimensi" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_proporsi_TD</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;reduksi dimensi.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tampilan-proporsi-kata-di-tiap-topik">
+<h3>Tampilan proporsi kata di tiap topik<a class="headerlink" href="#tampilan-proporsi-kata-di-tiap-topik" title="Permalink to this heading">#</a></h3>
+<p>Kode di bawah membuat DataFrame baru (<code class="docutils literal notranslate"><span class="pre">distribusi_kata_topik</span></code>) yang menyajikan informasi tentang distribusi kata-kata pada masing-masing topik dalam model Latent Dirichlet Allocation (LDA). Setiap baris dalam DataFrame ini mewakili satu topik, dan setiap kolom mencerminkan bobot (weight) kata-kata dalam membentuk topik tersebut. DataFrame ini memberikan pandangan tentang kontribusi relatif setiap kata terhadap pembentukan setiap topik dalam model LDA. Data ini dapat digunakan untuk mengeksplorasi makna dan ciri khas masing-masing topik.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Output distribusi kata pada topik</span>
+<span class="n">distribusi_kata_topik</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lda</span><span class="o">.</span><span class="n">components_</span><span class="p">)</span>
+<span class="n">distribusi_kata_topik</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-97496d94-8dcc-467f-bd72-d46777557440" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>28067</th>
+      <th>28068</th>
+      <th>28069</th>
+      <th>28070</th>
+      <th>28071</th>
+      <th>28072</th>
+      <th>28073</th>
+      <th>28074</th>
+      <th>28075</th>
+      <th>28076</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.200384</td>
+      <td>0.219586</td>
+      <td>0.264621</td>
+      <td>0.202933</td>
+      <td>0.426473</td>
+      <td>0.265913</td>
+      <td>0.331818</td>
+      <td>0.229393</td>
+      <td>...</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.213526</td>
+      <td>0.210152</td>
+      <td>0.2</td>
+      <td>0.646073</td>
+      <td>0.2</td>
+      <td>0.200755</td>
+      <td>0.200755</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.200296</td>
+      <td>0.208832</td>
+      <td>0.200428</td>
+      <td>0.200999</td>
+      <td>0.200697</td>
+      <td>0.200321</td>
+      <td>0.308944</td>
+      <td>0.201200</td>
+      <td>...</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.291196</td>
+      <td>0.292300</td>
+      <td>0.2</td>
+      <td>1.065649</td>
+      <td>0.2</td>
+      <td>0.275876</td>
+      <td>0.275876</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.200306</td>
+      <td>0.200366</td>
+      <td>0.200436</td>
+      <td>0.200278</td>
+      <td>0.200431</td>
+      <td>0.200377</td>
+      <td>0.216678</td>
+      <td>0.200205</td>
+      <td>...</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.200389</td>
+      <td>0.200818</td>
+      <td>0.2</td>
+      <td>0.205519</td>
+      <td>0.2</td>
+      <td>0.200296</td>
+      <td>0.200296</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.289038</td>
+      <td>0.203660</td>
+      <td>0.378297</td>
+      <td>0.501634</td>
+      <td>0.368600</td>
+      <td>0.211779</td>
+      <td>0.208683</td>
+      <td>0.200483</td>
+      <td>...</td>
+      <td>0.2</td>
+      <td>0.2</td>
+      <td>0.200715</td>
+      <td>0.201650</td>
+      <td>0.2</td>
+      <td>0.204649</td>
+      <td>0.2</td>
+      <td>0.200400</td>
+      <td>0.200400</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+</table>
+<p>4 rows × 28077 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-97496d94-8dcc-467f-bd72-d46777557440')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-97496d94-8dcc-467f-bd72-d46777557440 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-97496d94-8dcc-467f-bd72-d46777557440');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-9cf9b103-396f-444f-84db-10f8415fbb66">
+  <button class="colab-df-quickchart" onclick="quickchart('df-9cf9b103-396f-444f-84db-10f8415fbb66')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-9cf9b103-396f-444f-84db-10f8415fbb66 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="model-naive-bayes-with-lda">
+<h3>Model Naive Bayes With LDA<a class="headerlink" href="#model-naive-bayes-with-lda" title="Permalink to this heading">#</a></h3>
+<p>Kode tersebut melibatkan evaluasi model Naive Bayes yang telah dilatih menggunakan representasi dokumen dalam ruang topik dari model Latent Dirichlet Allocation (LDA). Proses evaluasi ini mencakup langkah-langkah berikut:</p>
+<ol class="arabic simple">
+<li><p><strong>Mengambil Model Naive Bayes Terbaik:</strong></p>
+<ul class="simple">
+<li><p>Mengambil model Naive Bayes terbaik yang telah diidentifikasi selama eksperimen. Model ini disimpan dalam <code class="docutils literal notranslate"><span class="pre">best_param</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Melakukan Prediksi pada Data Pengujian:</strong></p>
+<ul class="simple">
+<li><p>Menggunakan model Naive Bayes terbaik untuk melakukan prediksi pada data pengujian. Representasi dokumen dalam ruang topik diperoleh dari model LDA.</p></li>
+</ul>
+</li>
+<li><p><strong>Menghitung Akurasi:</strong></p>
+<ul class="simple">
+<li><p>Menghitung akurasi model, yaitu sejauh mana prediksi model sesuai dengan label sebenarnya pada data pengujian.</p></li>
+</ul>
+</li>
+<li><p><strong>Menampilkan Laporan Klasifikasi:</strong></p>
+<ul class="simple">
+<li><p>Mencetak laporan klasifikasi yang menyajikan metrik seperti presisi, recall, dan f1-score untuk setiap kelas. Laporan ini memberikan informasi rinci tentang kinerja model pada setiap kelas.</p></li>
+</ul>
+</li>
+<li><p><strong>Menampilkan Matriks Kebingungan:</strong></p>
+<ul class="simple">
+<li><p>Mencetak matriks kebingungan yang menunjukkan seberapa baik model dapat memprediksi setiap kelas pada data pengujian. Matriks ini berguna untuk mengevaluasi kinerja model lebih mendalam.</p></li>
+</ul>
+</li>
+</ol>
+<p>Proses ini memberikan gambaran komprehensif tentang seberapa baik model Naive Bayes yang telah dilatih dapat mengklasifikasikan dokumen berdasarkan representasi dalam ruang topik dari model LDA. Evaluasi ini memungkinkan untuk menilai kinerja model dengan lebih baik dan memahami sejauh mana model mampu mengenali kategori dokumen dengan tepat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Membuat model Naive Bayes</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">best_param</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span>
+
+<span class="c1"># Melakukan prediksi pada data pengujian</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">lda_x_test</span><span class="p">)</span>
+
+<span class="c1"># Menghitung akurasi</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan laporan klasifikasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Laporan Klasifikasi:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="c1"># Menampilkan matriks kebingungan</span>
+<span class="n">confusion</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matriks:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.7288888888888889
+Laporan Klasifikasi:
+              precision    recall  f1-score   support
+
+     Ekonomi       0.66      0.33      0.44       141
+    Olahraga       0.93      0.93      0.93       161
+   Teknologi       0.60      0.89      0.72       148
+
+    accuracy                           0.73       450
+   macro avg       0.73      0.72      0.70       450
+weighted avg       0.74      0.73      0.71       450
+
+Confusion Matriks:
+[[ 47  10  84]
+ [  9 150   2]
+ [ 15   2 131]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="predict">
+<h3>Predict<a class="headerlink" href="#predict" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Jakarta, CNN Indonesia -- Isu negatif, hoaks, hingga ujaran kebencian mengenai pengungsi Rohingya di Indonesia merebak di sejumlah platform media sosial. Siapa yang pertama kali menyebar narasi kebencian soal Rohingya di Aceh? Merujuk laporan yang didapat CNNIndonesia.com dari salah satu sumber PBB, narasi kebencian mengenai pengungsi Rohingya sudah dimulai sejak 21 November. Total ada empat unggahan dari akun Instagram @UNinIndonesia mendapat serangan komentar kebencian mengenai Rohingya. &quot;Bahkan unggahan lain (non-Rohingya) di akun @UNinIndonesia juga mendapat komentar negatif terkait Rohingya, karena unggahan sebelumnya dikolaborasikan dengan @UNHCRIndonesia dan @UNHCRIndonesia telah menonaktifkan komentar,&quot; tulis laporan itu, dikutip Selasa (12/12). Menurut laporan itu, ada 17.380 komentar mengenai Rohingya dan 91 persen di antaranya adalah komentar kebencian. Laporan PBB tersebut juga menunjukkan frekuensi penggunaan kata oleh para warganet yang berkomentar. Hampir semua komentar melontarkan komentar yang sama, yaitu &quot;bubarkan&quot; UNHCR/PBB, tapi dengan berbagai variasi sinonimnya, seperti &quot;tutup&quot;. Tidak hanya itu, yang paling unik adalah tingginya frekuensi penggunaan kata penghubung slang seperti &quot;aja&quot; dan &quot;buat&quot;, yang sangat jarang tercatat sebagai kata kunci yang sering muncul dalam analisis media sosial. &quot;Hal ini menunjukkan bahwa pesan-pesan tersebut telah diatur dan bukan berasal dari akar rumput. Banyak pesan yang kontra terhadap UNHCR, bukan hanya terhadap etnis Rohingya saja,&quot; lanjutnya. Laporan PBB itu juga mengungkap bahwa jangkauan atau reach sebagian besar unggahan mengenai pengungsi Rohingya 95 persen bukan followers akun @UNinIndonesia. Kemudian, sejumlah akun berkomentar bahwa mereka tidak mengetahui apa itu UNHCR, tapi memberikan narasi kebencian. Tidak hanya itu, jangkauan postingan feed ke non-followers rata-rata adalah 59 ribu per postingan, namun dengan jumlah share rata-rata hanya 177 per postingan, sementara rasio normal untuk share:reach adalah 1:10. Hal ini menunjukkan komentator-komentar tersebut mungkin telah menerima tautan langsung ke postingan PBB, memberikan komentar negatif yang anti-pengungsi dan mendesak &quot;menutup UNHCR&quot;. Laporan itu juga menemukan satu akun yang paling vokal dalam isu negatif mengenai etnis Rohingya, yakni @hamzali_abradinezad di Instagram dan @allinezad di Tiktok. PBB mengklaim sudah melaporkan akun ini ke pihak Meta dan perwakilan TikTok di Indonesia. &quot;Satu akun tampaknya menjadi inti dari kampanye ini; karena &quot;ujaran kebencian&quot; tidak dapat ditujukan kepada sebuah organisasi, hanya kepada orang-orang, kami telah melaporkannya atas pernyataannya yang mengatakan bahwa Rohingya harus diusir karena Indonesia akan menjadi Palestina berikutnya setelah kedatangan mereka,&quot; tulis PBB dalam laporan tersebut.&#39;</span><span class="p">]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">tfidf_vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">lda</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Teknologi&#39;], dtype=&#39;&lt;U9&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="save-model">
+<h3>Save Model<a class="headerlink" href="#save-model" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">lda</span><span class="p">,</span> <span class="s2">&quot;lda.pkl&quot;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;naive bayes.pkl&quot;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;naive bayes.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;naive bayes.pkl&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="save-vectorizer">
+<h3>Save Vectorizer<a class="headerlink" href="#save-vectorizer" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">tfidf_vectorizer</span><span class="p">,</span> <span class="s1">&#39;vectorizer.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;vectorizer.pkl&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Pages"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Perhitungan%20Manual%20Textrank.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Perhitungan Manual Ekstraksi Kata Menggunakan Textrank</strong></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployments">Deployments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">Import Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cek-null-data">Cek NULL Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning">Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizing">Tokenizing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword-removal">Stopword Removal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tfidf">TFIDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deklarasi-x-dan-y-dengan-drop-fitur-dokumen-dan-label">Deklarasi X dan y dengan drop fitur dokumen dan label</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-data">Splitting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-with-lda"><strong>Modeling With LDA</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-best-parameter-untuk-lda">Mencari Best Parameter untuk LDA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deklarasi-k-alpha-dan-beta">Deklarasi K, Alpha, dan Beta</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lda">LDA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tampilan-hasil-reduksi-dimensi">Tampilan Hasil Reduksi Dimensi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-data-hasil-reduksi-dimensi">Save Data hasil reduksi dimensi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tampilan-proporsi-kata-di-tiap-topik">Tampilan proporsi kata di tiap topik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-naive-bayes-with-lda">Model Naive Bayes With LDA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict">Predict</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-model">Save Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-vectorizer">Save Vectorizer</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Siti Ulun Nuha Karimah
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
